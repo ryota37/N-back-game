@@ -88,18 +88,5 @@ int main() {
 
     console_io(questions, 2);
 
-    // for (auto question : questions) {
-    //     std::cout << question.first << std::endl;
-    //     std::cout << "Enter your answer: ";
-    //     int user_answer;
-    //     std::cin >> user_answer;
-    //     std::cout << "The answer is: " << question.second << std::endl;
-    //     if (user_answer == question.second) {
-    //         std::cout << "Correct!" << std::endl;
-    //     } else {
-    //         std::cout << "Incorrect!" << std::endl;
-    //     }
-    // }
-
     return 0;
 }
