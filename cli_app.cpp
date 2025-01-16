@@ -82,7 +82,22 @@ void console_io(std::vector<std::pair<std::string, int>> questions, int number_o
     }
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+
+    // Check how argc and argv work
+
+    // std::cout << argc << std::endl;
+    
+    // for (int i = 0; i < argc; ++i) {
+    //     std::cout << "Argument " << i << ": " << argv[i] << std::endl;
+    // }
+
+    // Example:
+    // ./a.out --god --and
+    // 3
+    // Argument 0: ./a.out
+    // Argument 1: --god
+    // Argument 2: --and
 
     std::vector<std::pair<std::string, int>> questions = generate_questions(5, 2);
 
