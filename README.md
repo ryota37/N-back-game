@@ -6,9 +6,9 @@
 
 - Execute the command below.
 
-```
-$ g++ -std=c++17 cli_app.cpp
-& ./a.out
+```shell
+g++ -std=c++17 cli_app.cpp
+./a.out
 ```
 
 - Then folow the instructions shown on your console.
