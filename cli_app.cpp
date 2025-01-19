@@ -4,6 +4,25 @@
 #include <vector>
 #include <utility>
 
+int determine_number_of_questions() {
+    int number_of_questions;
+    
+    std::cout << "Enter the number of questions: " << std::endl;
+    std::cin >> number_of_questions;
+
+    return number_of_questions;
+}
+
+int detemine_number_of_N_back() {
+    int number_of_n_back;
+    std::cout << "Enter the number of backs: " << std::endl;
+    std::cin >> number_of_n_back;
+
+    return number_of_n_back;
+}
+
+
+
 std::vector<std::pair<std::string, int>> generate_questions(int number_of_questions, int number_of_operators) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -55,7 +74,7 @@ void console_io(std::vector<std::pair<std::string, int>> questions, int number_o
     for (int i = 0; i < number_of_questions+number_of_n_back; i++) {
         if (i < number_of_n_back){
             std::cout << questions[i].first << std::endl;
-            std::cout << "Press Enter: ";
+            std::cout << "Press Enter: " << std::endl;
             std::cin.ignore();
         } else if (i >= number_of_n_back && i < number_of_questions) {
             std::cout << questions[i].first << std::endl;
@@ -82,24 +101,12 @@ void console_io(std::vector<std::pair<std::string, int>> questions, int number_o
     }
 }
 
-int main(int argc, char *argv[]) {
+int main() {
 
-    // Check how argc and argv work
+    int number_of_questions = determine_number_of_questions();
+    int number_of_n_back = detemine_number_of_N_back();
 
-    // std::cout << argc << std::endl;
-    
-    // for (int i = 0; i < argc; ++i) {
-    //     std::cout << "Argument " << i << ": " << argv[i] << std::endl;
-    // }
-
-    // Example:
-    // ./a.out --god --and
-    // 3
-    // Argument 0: ./a.out
-    // Argument 1: --god
-    // Argument 2: --and
-
-    std::vector<std::pair<std::string, int>> questions = generate_questions(5, 2);
+    std::vector<std::pair<std::string, int>> questions = generate_questions(number_of_questions, number_of_n_back);
 
     console_io(questions, 2);
 
