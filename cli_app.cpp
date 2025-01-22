@@ -4,6 +4,8 @@
 #include <vector>
 #include <utility>
 
+#include "generate_questions.h"
+
 int determine_number_of_questions() {
     int number_of_questions;
     
@@ -19,54 +21,6 @@ int detemine_number_of_N_back() {
     std::cin >> number_of_n_back;
 
     return number_of_n_back;
-}
-
-
-
-std::vector<std::pair<std::string, int>> generate_questions(int number_of_questions, int number_of_operators) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> number_generator(0, 9);
-    std::uniform_int_distribution<> operator_generator(0, number_of_operators - 1);
-    int num1;
-    int num2;
-    int answer;
-    int arithmetic_operator_id;
-    std::string arithmetic_operator;
-    std::vector<std::pair<std::string, int>> questions;
-
-    for (int i = 0; i < number_of_questions; i++) {
-        // Generate two random numbers and an arithmetic operator
-        num1 = number_generator(gen);
-        num2 = number_generator(gen);
-
-        // Generate an arithmetic operator
-        // 0: +, 1: -, 2: *, 3: /
-        arithmetic_operator_id = operator_generator(gen);
-        switch (arithmetic_operator_id) {
-            case 0:
-                arithmetic_operator = "+";
-                answer = num1 + num2;
-                break;
-            case 1:
-                arithmetic_operator = "-";
-                answer = num1 - num2;
-                break;
-            case 2:
-                arithmetic_operator = "×";
-                answer = num1 * num2;
-                break;
-            case 3:
-                arithmetic_operator = "÷";
-                answer = num1 / num2;
-                break;
-        }
-
-        std::string question = std::to_string(num1) + arithmetic_operator + std::to_string(num2) + "=?";
-
-        questions.emplace_back(question, answer);
-    }
-    return questions;
 }
 
 void console_io(std::vector<std::pair<std::string, int>> questions, int number_of_n_back) {
