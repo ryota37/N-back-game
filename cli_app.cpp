@@ -4,6 +4,25 @@
 #include <vector>
 #include <utility>
 
+int determine_number_of_questions() {
+    int number_of_questions;
+    
+    std::cout << "Enter the number of questions: ";
+    std::cin >> number_of_questions;
+
+    return number_of_questions;
+}
+
+int detemine_number_of_N_back() {
+    int number_of_n_back;
+    std::cout << "Enter the number of backs: ";
+    std::cin >> number_of_n_back;
+
+    return number_of_n_back;
+}
+
+
+
 std::vector<std::pair<std::string, int>> generate_questions(int number_of_questions, int number_of_operators) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -56,7 +75,8 @@ void console_io(std::vector<std::pair<std::string, int>> questions, int number_o
         if (i < number_of_n_back){
             std::cout << questions[i].first << std::endl;
             std::cout << "Press Enter: ";
-            std::cin.ignore();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.get();
         } else if (i >= number_of_n_back && i < number_of_questions) {
             std::cout << questions[i].first << std::endl;
             std::cout << "Enter your answer: ";
@@ -84,9 +104,12 @@ void console_io(std::vector<std::pair<std::string, int>> questions, int number_o
 
 int main() {
 
-    std::vector<std::pair<std::string, int>> questions = generate_questions(5, 2);
+    int number_of_questions = determine_number_of_questions();
+    int number_of_n_back = detemine_number_of_N_back();
 
-    console_io(questions, 2);
+    std::vector<std::pair<std::string, int>> questions = generate_questions(number_of_questions, 2);
+
+    console_io(questions, number_of_n_back);
 
     return 0;
 }
