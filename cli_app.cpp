@@ -4,7 +4,7 @@
 #include <vector>
 #include <utility>
 
-#include "generate_questions.h"
+#include "Generator.h"
 
 int determine_number_of_questions() {
     int number_of_questions;
@@ -61,7 +61,9 @@ int main() {
     int number_of_questions = determine_number_of_questions();
     int number_of_n_back = detemine_number_of_N_back();
 
-    std::vector<std::pair<std::string, int>> questions = generate_questions(number_of_questions, 2);
+    Generator generator;
+
+    std::vector<std::pair<std::string, int>> questions = generator.generate_questions(number_of_questions, 2);
 
     console_io(questions, number_of_n_back);
 

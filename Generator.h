@@ -1,13 +1,17 @@
-# ifndef GENERATE_QUESTIONS_H
-# define GENERATE_QUESTIONS_H
+# ifndef GENERATOR_H
+# define GENERATOR_H
 
-class Generate_questions {
+#include <iostream>
+#include <random>
+#include <string>
+#include <vector>
+#include <utility>
+
+class Generator {
 
 private:
     std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> number_generator(0, 9);
-    std::uniform_int_distribution<> operator_generator(0, number_of_operators - 1);
+    std::mt19937 gen;
     int num1;
     int num2;
     int answer;
@@ -16,8 +20,9 @@ private:
     std::vector<std::pair<std::string, int>> questions;
 
 public:
+    int number_generator(int min, int max);
     std::vector<std::pair<std::string, int>> generate_questions(int number_of_questions, int number_of_operators);
 
 };
 
-# endif // GENERATE_QUESTIONS_H
+# endif // GENERATOR_H
